@@ -1,5 +1,6 @@
-import Expenseitems from './newcompo/Expenseitems';
-function App(){
+import React from 'react'
+import ExpenseItems from '../newcompo/Expenses/ExpenseItems';
+const  App =()=>{
   const ExpenseArray = [
     {
       id: 'e1',
@@ -23,20 +24,17 @@ function App(){
       location: 'Chicago, IL',
     },
      ];
-     const expenseItems = [];
-
-  for (let i = 0; i < ExpenseArray.length; i++) {
-    const expense = ExpenseArray[i];
-    expenseItems.push(
-      <Expenseitems
-        title={expense.title}
-        amount={expense.amount}
-        date={expense.date}
-        location={expense.location}
+     const expenseItems = ExpenseArray.map((val)=>{
+      return(
+        <ExpenseItems
+        key={val.id}
+        title={val.title}
+        amount={val.amount}
+        date={val.date}
+        location={val.location}
       />
-    );
-  }
-     
+      )
+     }); 
   return(
     <div>
        <h2>Let's get started</h2>

@@ -1,16 +1,17 @@
 import ExpenseDetails from './ExpenseDetails'
 import ExpenseDate from './ExpenseDate';
 import './Expenseitems.css';
-function Expenseitems(props){
+import Card from './Card.jsx'
+const ExpenseItems = (props) =>{
 
     return (
-        <div className="expense">
+        <Card className="expense">
             <ExpenseDate date = {props.date}/>
             <ExpenseDetails 
             amount={props.amount} 
             location={props.location}   
             title={props.title} />
-        </div>
+        </Card>
     )
 }
-export default Expenseitems;
+export default ExpenseItems;
