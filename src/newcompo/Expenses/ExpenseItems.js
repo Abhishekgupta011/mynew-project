@@ -1,13 +1,20 @@
+import { useState } from 'react';
 import ExpenseDetails from './ExpenseDetails'
 import ExpenseDate from './ExpenseDate';
 import './Expenseitems.css';
 import Card from '../../UI/Card.js'
 const ExpenseItems = (props) =>{
+    const [title , UpdatedTitle] = useState(props.title)
     const clickHandler = ()=>{
-        console.log('clicked')
+        UpdatedTitle('updated')
+        console.log('update')
+    }
+    const [amount , UpdatedExpense] = useState(props.amount)
+    const ExpenseHandler = ()=>{
+        UpdatedExpense('100')
     }
     const deleteExpenseHandler = () => {
-        const expenseItem = document.querySelector(`.expense`);
+        const expenseItem = document.querySelector(`.expense-${props.id}`);
         if (expenseItem) {
             expenseItem.parentNode.removeChild(expenseItem);
             console.log('delete');
@@ -19,10 +26,10 @@ const ExpenseItems = (props) =>{
         <Card className="expense">
             <ExpenseDate date = {props.date}/>
             <ExpenseDetails 
-            amount={props.amount} 
+            amount={amount} 
             location={props.location}   
-            title={props.title}
-             />
+            title={title}
+             /> <button onClick={ExpenseHandler}>change expense</button>
              <button onClick={clickHandler}>Change Title</button>
              <button onClick={deleteExpenseHandler}>Delete Expense</button>
         </Card>
