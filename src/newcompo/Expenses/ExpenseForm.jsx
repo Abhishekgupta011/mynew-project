@@ -1,31 +1,47 @@
-import React from "react";
+import React, { useState } from "react";
 
 const ExpenseForm = () => {
+  const [enteredTitle, setEnteredTitle] = useState("");
+  const [enteredAmount, setEnteredAmount] = useState("");
+  const [enteredDate, setEnteredDate] = useState("");
+
   const handleTitleChange = (event) => {
-    console.log(event.target.value);
+    setEnteredTitle(event.target.value);
   };
 
   const handleAmountChange = (event) => {
-    console.log(event.target.value);
+    setEnteredAmount(event.target.value);
   };
 
   const handleDateChange = (event) => {
-    console.log(event.target.value);
+    setEnteredDate(event.target.value);
   };
 
   return (
     <form>
       <div>
         <label>Title</label>
-        <input type="text" onChange={handleTitleChange} />
+        <input type="text" value={enteredTitle} onChange={handleTitleChange} />
       </div>
       <div>
         <label>Amount</label>
-        <input type="number" min="0.01" step="0.01" onChange={handleAmountChange} />
+        <input
+          type="number"
+          min="0.01"
+          step="0.01"
+          value={enteredAmount}
+          onChange={handleAmountChange}
+        />
       </div>
       <div>
         <label>Date</label>
-        <input type="date" min="2019-01-01" max="2022-12-31" onChange={handleDateChange} />
+        <input
+          type="date"
+          min="2019-01-01"
+          max="2022-12-31"
+          value={enteredDate}
+          onChange={handleDateChange}
+        />
       </div>
       <button type="submit">Add Expense</button>
     </form>
@@ -33,4 +49,5 @@ const ExpenseForm = () => {
 };
 
 export default ExpenseForm;
+
 
