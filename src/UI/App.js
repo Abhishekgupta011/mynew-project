@@ -1,5 +1,6 @@
 import React from 'react'
 import ExpenseItems from '../newcompo/Expenses/ExpenseItems';
+import ExpenseForm from '../newcompo/Expenses/ExpenseForm';
 const  App =()=>{
   const ExpenseArray = [
     {
@@ -26,6 +27,7 @@ const  App =()=>{
      ];
      const expenseItems = ExpenseArray.map((val)=>{
       return(
+        <>
         <ExpenseItems
         key={val.id}
         title={val.title}
@@ -33,6 +35,8 @@ const  App =()=>{
         date={val.date}
         location={val.location}
       />
+      <ExpenseForm/>
+      </>
       )
      }); 
   return(
