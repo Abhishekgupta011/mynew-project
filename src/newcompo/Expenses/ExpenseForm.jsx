@@ -1,27 +1,50 @@
 import React, { useState } from "react";
 
 const ExpenseForm = () => {
-  const [enteredTitle, setEnteredTitle] = useState("");
-  const [enteredAmount, setEnteredAmount] = useState("");
-  const [enteredDate, setEnteredDate] = useState("");
+  const [userInput , SetuserInput] = useState({
+    enteredTitle : '',
+    enteredAmount : '',
+    enteredDate : '',
+  });
 
   const handleTitleChange = (event) => {
-    setEnteredTitle(event.target.value);
+    SetuserInput({
+      ...userInput,
+      enteredTitle : event.target.value,
+    });
   };
 
   const handleAmountChange = (event) => {
-    setEnteredAmount(event.target.value);
+    SetuserInput({
+      ...userInput,
+      enteredAmount : event.target.value,
+    });
   };
 
   const handleDateChange = (event) => {
-    setEnteredDate(event.target.value);
+    SetuserInput({
+      ...userInput,
+      enteredDate : event.target.value,
+    });
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault(); // Prevent the default form submission
+
+    const expenseData = {
+      title: userInput.enteredTitle,
+      amount: +userInput.enteredAmount,
+      date: new Date(userInput.enteredDate),
+    };
+    
+    console.log(expenseData);
   };
 
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       <div>
         <label>Title</label>
-        <input type="text" value={enteredTitle} onChange={handleTitleChange} />
+        <input type="text" value={userInput.enteredTitle} onChange={handleTitleChange} />
       </div>
       <div>
         <label>Amount</label>
@@ -29,7 +52,7 @@ const ExpenseForm = () => {
           type="number"
           min="0.01"
           step="0.01"
-          value={enteredAmount}
+          value={userInput.enteredAmount}
           onChange={handleAmountChange}
         />
       </div>
@@ -39,7 +62,7 @@ const ExpenseForm = () => {
           type="date"
           min="2019-01-01"
           max="2022-12-31"
-          value={enteredDate}
+          value={userInput.enteredDate}
           onChange={handleDateChange}
         />
       </div>
@@ -49,5 +72,6 @@ const ExpenseForm = () => {
 };
 
 export default ExpenseForm;
+
 
 
