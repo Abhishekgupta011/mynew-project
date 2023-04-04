@@ -1,14 +1,15 @@
-import React from 'react'
+import React, { useState } from 'react';
 import ExpenseItems from '../newcompo/Expenses/ExpenseItems';
 import ExpenseForm from '../newcompo/Expenses/ExpenseForm';
-const  App =()=>{
-  const ExpenseArray = [
+
+const App = () => {
+  const [expenseArray, setExpenseArray] = useState([
     {
       id: 'e1',
       title: 'toilet paper',
       amount: 94.12,
-      date: new Date(2019,3,18),
-      location : 'Los Angeles, CA'
+      date: new Date(2019, 3, 18),
+      location: 'Los Angeles, CA',
     },
     {
       id: 'e2',
@@ -24,26 +25,33 @@ const  App =()=>{
       date: new Date(2021, 2, 10),
       location: 'Chicago, IL',
     },
-     ];
-     const expenseItems = ExpenseArray.map((val)=>{
-      return(
-        <>
-        <ExpenseItems
+  ]);
+
+  const addExpenseHandler = (expense) => {
+    setExpenseArray((prevExpenses) => {
+      return [...prevExpenses, expense];
+    });
+  };
+
+  const expenseItems = expenseArray.map((val) => {
+    return (
+      <ExpenseItems
         key={val.id}
         title={val.title}
         amount={val.amount}
         date={val.date}
         location={val.location}
       />
-      <ExpenseForm/>
-      </>
-      )
-     }); 
-  return(
+    );
+  });
+
+  return (
     <div>
-       <h2>Let's get started</h2>
-       {expenseItems}
+      <h2>Let's get started</h2>
+      <ExpenseForm onAddExpense={addExpenseHandler} />
+      {expenseItems}
     </div>
   );
-}
+};
+
 export default App;
