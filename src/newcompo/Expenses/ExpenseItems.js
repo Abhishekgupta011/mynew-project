@@ -3,6 +3,7 @@ import ExpenseDetails from './ExpenseDetails'
 import ExpenseDate from './ExpenseDate';
 import './Expenseitems.css';
 import Card from '../../UI/Card.js'
+import ExpenseFilter from './ExpenseFilter';
 const ExpenseItems = (props) =>{
     const [title , UpdatedTitle] = useState(props.title)
     const clickHandler = ()=>{
@@ -22,8 +23,13 @@ const ExpenseItems = (props) =>{
             console.log(`Element with ID expense not found.`);
         }
     }
+    const [filteredYear, setFilteredYear] = useState ('2020')
+    const filterChangeHandler = selectedYear =>{
+        setFilteredYear(selectedYear)
+    }
     return (
         <Card className="expense">
+            <ExpenseFilter selected={filteredYear} onChangeFilter={filterChangeHandler}/>
             <ExpenseDate date = {props.date}/>
             <ExpenseDetails 
             amount={amount} 
