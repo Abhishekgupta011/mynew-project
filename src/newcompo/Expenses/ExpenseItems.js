@@ -35,7 +35,9 @@ import ExpenseFilter from './ExpenseFilter';
     return (
         <Card className="expense">
             <ExpenseFilter selected={filteredYear} onChangeFilter={filterChangeHandler} />
-            {props.expenses.map((expense) => (
+            {props.expenses.filter(expense =>{
+                return expense.date.getFullYear().toString() ===filteredYear;
+            }).map((expense) => (
                 <ExpenseDetails
                     key = {expense.id}
                     amount={expense.amount}
