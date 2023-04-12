@@ -31,22 +31,27 @@ import ExpenseFilter from './ExpenseFilter';
     const filterChangeHandler = (selectedYear) => {
         setFilteredYear(selectedYear);
     };
+    const filteredExpense = props.expenses.filter(expense =>{
+        return expense.date.getFullYear().toString() ===filteredYear;
+    })
+    let expenseContent = <p>No expenses found.</p>
+    if(filteredExpense.length>0){
+        expenseContent = filteredExpense.map((expense) => (
+            <ExpenseDetails
+                key = {expense.id}
+                amount={expense.amount}
+                location={expense.location}
+                title={expense.title}
+                date = {expense.date}
+                
+            />
+        ))
+    }
 
     return (
         <Card className="expense">
             <ExpenseFilter selected={filteredYear} onChangeFilter={filterChangeHandler} />
-            {props.expenses.filter(expense =>{
-                return expense.date.getFullYear().toString() ===filteredYear;
-            }).map((expense) => (
-                <ExpenseDetails
-                    key = {expense.id}
-                    amount={expense.amount}
-                    location={expense.location}
-                    title={expense.title}
-                    date = {expense.date}
-                    
-                />
-            ))}
+            {expenseContent}
             {/* <button onClick={expenseHandler}>Change Expense</button>
             <button onClick={clickHandler}>Change Title</button>
             <button onClick={deleteExpenseHandler}>Delete Expense</button> */}
