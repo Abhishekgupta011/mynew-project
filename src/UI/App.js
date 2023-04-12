@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import ExpenseItems from '../newcompo/Expenses/ExpenseItems';
-import ExpenseForm from '../newcompo/Expenses/ExpenseForm';
+import ExpenseItems from '../newcompo/Expenses/ExpenseItems.js';
+import NewExpense from '../newcompo/Expenses/Newexpense.js';
+
 
 const App = () => {
   const [expenseArray, setExpenseArray] = useState([
@@ -33,25 +34,15 @@ const App = () => {
     });
   };
 
-  const expenseItems = expenseArray.map((val) => {
-    return (
-      <ExpenseItems
-        key={val.id}
-        title={val.title}
-        amount={val.amount}
-        date={val.date}
-        location={val.location}
-      />
-    );
-  });
 
   return (
     <div>
       <h2>Let's get started</h2>
-      <ExpenseForm onAddExpense={addExpenseHandler} />
-      {expenseItems}
+      <NewExpense onAddExpense={addExpenseHandler} />
+      <ExpenseItems expenses={expenseArray} />
     </div>
   );
 };
 
 export default App;
+

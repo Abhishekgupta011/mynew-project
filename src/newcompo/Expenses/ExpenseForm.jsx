@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const ExpenseForm = () => {
+const ExpenseForm = (props) => {
 //   const [userInput , SetuserInput] = useState({
 //     enteredTitle : '',
 //     enteredAmount : '',
@@ -9,6 +9,7 @@ const ExpenseForm = () => {
 const [enteredTitle, setEnteredTitle] = useState("");
 const [enteredAmount, setEnteredAmount] = useState("");
 const [enteredDate, setEnteredDate] = useState("");
+const [enteredLocation , setEnteredLocation] = useState("")
 
 const handleTitleChange = (event) => {
   setEnteredTitle(event.target.value);
@@ -20,6 +21,9 @@ const handleAmountChange = (event) => {
 const handleDateChange = (event) => {
     setEnteredDate(event.target.value);
   };
+  const handleLocationChange = (event)=>{
+    setEnteredLocation(event.target.value);
+  }
 
 //   const handleTitleChange = (event) => {
 //     SetuserInput({
@@ -76,9 +80,10 @@ const handleDateChange = (event) => {
       title: enteredTitle,
       amount: enteredAmount,
       date: new Date(enteredDate),
+      location: enteredLocation,
     };
-    
-    console.log(expenseData);
+    console.log(expenseData)
+    props.onSaveExpenseData(expenseData)
     setEnteredTitle('')
     setEnteredAmount('')
     setEnteredDate('')
@@ -98,6 +103,14 @@ const handleDateChange = (event) => {
           step="0.01"
           value={enteredAmount}
           onChange={handleAmountChange}
+        />
+      </div>
+      <div>
+        <label>Location</label>
+        <input
+            type="text"
+            value={enteredLocation}
+            onChange={handleLocationChange}
         />
       </div>
       <div>
