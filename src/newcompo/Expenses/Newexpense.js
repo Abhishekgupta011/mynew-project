@@ -1,6 +1,7 @@
 import React from 'react';
 import ExpenseForm from './ExpenseForm';
 import { useState } from 'react';
+import './Newexpense.css'
 const NewExpense = (props) => {
 const [isEditing , setIsEditing] = useState(false);
   const saveExpenseDataHandler = (enteredExpenseData) => {

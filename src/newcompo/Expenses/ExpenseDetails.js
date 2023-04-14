@@ -1,13 +1,14 @@
 import React from "react";
 import ExpenseDate from "./ExpenseDate";
 import Card from "../../UI/Card";
+import './ExpenseDetails.css'
 const ExpenseDetails = (props) => {
     return (
-        <Card>
+        <Card className = 'expense-item'>
             <ExpenseDate date={props.date} />
-            <div>
+            <div className="expense-item__description">
             <h2>{props.title}</h2>
-            <div>${props.amount}</div>
+            <div className="expense-item__price">${props.amount}</div>
             <div>{props.location}</div>
             </div>
         </Card>

@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import ExpenseItems from '../newcompo/Expenses/ExpenseItems.js';
 import NewExpense from '../newcompo/Expenses/Newexpense.js';
 
-
 const App = () => {
   const [expenseArray, setExpenseArray] = useState([
     {

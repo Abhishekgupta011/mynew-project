@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import './ExpenseForm.css'
 const ExpenseForm = (props) => {
 //   const [userInput , SetuserInput] = useState({
 //     enteredTitle : '',
@@ -90,12 +90,12 @@ const handleDateChange = (event) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
+    <form onSubmit={handleSubmit} className="new-expense__controls">
+      <div className="new-expense__control label">
         <label>Title</label>
         <input type="text" value={enteredTitle} onChange={handleTitleChange} />
       </div>
-      <div>
+      <div className="new-expense__control input">
         <label>Amount</label>
         <input
           type="number"
@@ -105,7 +105,7 @@ const handleDateChange = (event) => {
           onChange={handleAmountChange}
         />
       </div>
-      <div>
+      <div className="new-expense__control input">
         <label>Location</label>
         <input
             type="text"
@@ -113,7 +113,7 @@ const handleDateChange = (event) => {
             onChange={handleLocationChange}
         />
       </div>
-      <div>
+      <div className="new-expense__control input">
         <label>Date</label>
         <input
           type="date"
@@ -123,8 +123,8 @@ const handleDateChange = (event) => {
           onChange={handleDateChange}
         />
       </div>
-      <button type="button" onClick={props.onCancel}>Cancel</button>
-      <button type="submit">Add Expense</button>
+      <button type="button" onClick={props.onCancel} className="new-expense__actions">Cancel</button>
+      <button type="submit" className="new-expense__actions">Add Expense</button>
     </form>
   );
 };

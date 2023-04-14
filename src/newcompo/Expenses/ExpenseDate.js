@@ -1,5 +1,5 @@
 import React from 'react';
-
+import './ExpenseDate.css'
 const ExpenseDate = (props) => {
     // Add null check for props.date
     if (!props.date) {
@@ -11,10 +11,10 @@ const ExpenseDate = (props) => {
     const year = props.date.getFullYear();
 
     return (
-        <div>
-            <div>{month}</div>
-            <div>{day}</div>
-            <div>{year}</div>
+        <div className ='expense-date'>
+            <div className='expense-date__month'>{month}</div>
+            <div className='expense-date__year'>{day}</div>
+            <div className='expense-date__day'>{year}</div>
         </div>
     );
 }

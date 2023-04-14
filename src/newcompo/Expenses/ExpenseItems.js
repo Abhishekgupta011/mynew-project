@@ -3,7 +3,7 @@ import ExpenseList from './ExpenseList';
 import './Expenseitems.css';
 import Card from '../../UI/Card.js';
 import ExpenseFilter from './ExpenseFilter';
-
+import ExpensesChart from './ExpensesChart';
  const ExpenseItems = (props) => {
 //     const [title, updatedTitle] = useState(props.title);
 //     const clickHandler = () => {
@@ -36,8 +36,9 @@ import ExpenseFilter from './ExpenseFilter';
     
 
     return (
-        <Card className="expense">
+        <Card className="expenses">
             <ExpenseFilter selected={filteredYear} onChangeFilter={filterChangeHandler} />
+            <ExpensesChart expenses = {filteredExpense}/>
             <ExpenseList expense ={filteredExpense}/>
             {/* <button onClick={expenseHandler}>Change Expense</button>
             <button onClick={clickHandler}>Change Title</button>
